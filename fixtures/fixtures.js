@@ -4,7 +4,6 @@ import { InventoryPage } from '../pages/inventoryPage.js';
 import { CartPage } from '../pages/cartPage.js';
 import { CheckoutPage } from '../pages/checkoutPage.js';
 import { HeaderComponent } from '../components/HeaderComponent.js';
-import { use } from 'react';
 
 // Extend Playwright's test with custom fixtures
 // Each fixture creates a page object and passes it to the test
