@@ -1,0 +1,124 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                    QA CHEAT SHEET — Git & Playwright               ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════
+  GIT — DAILY COMMANDS (use these 90%)
+═══════════════════════════════════════
+
+  git pull                                   Get latest code from team
+  git status                                 See what files changed
+  git diff                                   See actual code changes
+  git add .                                  Stage all changes
+  git commit -m "message"                    Save changes locally
+  git push                                   Push to GitHub
+  git checkout -b feature/branch-name        Create & switch to new branch
+  git checkout main                          Switch to main branch
+
+═══════════════════════════════════════
+  GIT — BRANCHING & COLLABORATION
+═══════════════════════════════════════
+
+  git branch -a                              List all branches
+  git checkout branch-name                   Switch to existing branch
+  git merge main                             Bring latest main into your branch
+  git branch -d branch-name                  Delete local branch
+  git fetch                                  Download remote changes (no merge)
+
+═══════════════════════════════════════
+  GIT — UNDO & FIX MISTAKES
+═══════════════════════════════════════
+
+  git stash                                  Temporarily save uncommitted changes
+  git stash pop                              Bring back stashed changes
+  git checkout -- filename                   Undo changes to a file (before commit)
+  git reset HEAD~1                           Undo last commit (keep changes)
+
+═══════════════════════════════════════
+  GIT — INSPECT & DEBUG
+═══════════════════════════════════════
+
+  git log --oneline -10                      See last 10 commits
+  git blame filename                         See who changed each line
+
+═══════════════════════════════════════
+  GIT — FIRST-TIME SETUP
+═══════════════════════════════════════
+
+  git init                                   Initialize new repo
+  git remote add origin <url>                Link to GitHub repo
+  git branch -M main                         Rename branch to main
+  git push -u origin main                    First push to GitHub
+
+═══════════════════════════════════════
+  COMMIT MESSAGE FORMAT
+═══════════════════════════════════════
+
+  feat: add checkout validation tests        New feature/test
+  fix: correct cart badge count              Bug fix
+  refactor: move logic to HeaderComponent    Code restructure
+  chore: update playwright to v1.59          Maintenance
+  test: add negative login scenarios         Test-only changes
+
+═══════════════════════════════════════
+  PLAYWRIGHT — RUN TESTS
+═══════════════════════════════════════
+
+  npx playwright test                        Run all tests
+  npx playwright test tests/login.spec.js    Run one file
+  npx playwright test -g "checkout"          Run tests matching name
+  npx playwright test --grep @smoke          Run only tagged tests
+  npx playwright test --project=chromium     Run on specific browser
+  npx playwright test --retries=2            Retry failed tests
+
+═══════════════════════════════════════
+  PLAYWRIGHT — DEBUG & INSPECT
+═══════════════════════════════════════
+
+  npx playwright test --headed               Watch browser while testing
+  npx playwright test --debug                Step through with debugger
+  npx playwright test --ui                   Visual test runner (best for debugging)
+  npx playwright test --trace on             Capture trace for every test
+  npx playwright show-trace trace.zip        View a trace file
+
+═══════════════════════════════════════
+  PLAYWRIGHT — REPORTS
+═══════════════════════════════════════
+
+  npx playwright show-report                 Open last HTML report
+  npx playwright test --reporter=line        Inline results in terminal
+  npx playwright test --reporter=list        Detailed list in terminal
+
+═══════════════════════════════════════
+  DAILY QA WORKFLOW
+═══════════════════════════════════════
+
+  Morning:
+    1. git pull                              Get latest code
+    2. Check CI dashboard                    Any overnight failures?
+    3. Pick up task from board
+
+  Working:
+    4. git checkout -b feature/your-task     Create branch
+    5. Write/update tests
+    6. npx playwright test --headed          Verify locally
+    7. git add . → git commit → git push     Push changes
+    8. Open PR on GitHub                     Request review
+
+  Review:
+    9. Review teammate's PR
+   10. Check CI passed
+   11. Approve or request changes
+
+  End of day:
+   12. Merge approved PRs
+   13. Verify main branch CI is green
+
+═══════════════════════════════════════
+  PR WORKFLOW
+═══════════════════════════════════════
+
+  Push branch → GitHub → Compare & Pull Request
+  → Write description → Assign reviewer
+  → CI runs automatically → Tests must pass ✅
+  → Reviewer approves → Merge → Delete branch

@@ -12,7 +12,7 @@ import { expectedProducts, sortOptions, ProductsToRemove } from '../testData/log
     test.describe('Inventory Page Tests', () => {
 
 
-test('1 ) Add first product to cart', async ({page, inventory, cart, checkout, header}) => {
+test('1 ) Add first product to cart @smoke', async ({page, inventory, cart, checkout, header}) => {
     await inventory.addFirstProductToCart();
     expect(await header.getCartBadge()).toBe(1);
     await inventory.goToCart();
@@ -24,7 +24,7 @@ test('1 ) Add first product to cart', async ({page, inventory, cart, checkout, h
     await expect(page).toHaveURL(/checkout-complete\.html/);
 });
 
-test('2) Add a specific product by name --> cart Badge becomes 1', async({page, inventory, cart, checkout, header}) =>{
+test('2) Add a specific product by name --> cart Badge becomes 1 @smoke', async({page, inventory, cart, checkout, header}) =>{
     await inventory.addToCartByProductName('Sauce Labs Backpack');
     expect(await header.getCartBadge()).toBe(1);
     await inventory.goToCart();
@@ -36,12 +36,12 @@ test('2) Add a specific product by name --> cart Badge becomes 1', async({page, 
     });
 
 
-test('3) Verify button changes to Remove after adding product', async({inventory}) => {
+test('3) Verify button changes to Remove after adding product @regression', async({inventory}) => {
     await inventory.addFirstProductToCart();
     expect(await inventory.getButtonText('Sauce Labs Backpack')).toBe('Remove');
 });
 
-test('4) Add all products to the cart', async({page, inventory, cart, checkout}) => {
+test('4) Add all products to the cart @regression', async({page, inventory, cart, checkout}) => {
     //Add all products to cart
     await inventory.addAllProductsToCart();
     await inventory.goToCart();
@@ -52,7 +52,7 @@ test('4) Add all products to the cart', async({page, inventory, cart, checkout})
     await expect(page).toHaveURL(/checkout-complete\.html/);
 });
 
-test('5) Remove a Product from the Cart', async({page, inventory, cart, header}) =>{
+test('5) Remove a Product from the Cart @regression', async({page, inventory, cart, header}) =>{
     await inventory.addToCartByProductName('Sauce Labs Bike Light');
     expect(await header.getCartBadge()).toBe(1);
     await inventory.goToCart(); 
@@ -62,7 +62,7 @@ test('5) Remove a Product from the Cart', async({page, inventory, cart, header})
     
 })
 
-test('Add Multiple Products and Remove a few directly from Inventory', async({inventory, header}) => {
+test('Add Multiple Products and Remove a few directly from Inventory @regression', async({inventory, header}) => {
  const totalProducts = await inventory.products.count();
  await inventory.addAllProductsToCart();
  expect(await header.getCartBadge()).toBe(totalProducts);

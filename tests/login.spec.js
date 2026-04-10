@@ -8,7 +8,7 @@ test.describe('Login Module', () => {
   });
 
   // ✅ Positive test
-  test('Verify Successful Login', async ({ login }) => {
+  test('Verify Successful Login @smoke', async ({ login }) => {
     await login.loginAs(users.validUser);
     expect(await login.isLoggedInSuccessfully()).toBe(true);
   });
