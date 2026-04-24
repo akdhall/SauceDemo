@@ -8,6 +8,9 @@ setup('authenticate', async ({ page }) => {
   await login.loginAs(users.validUser);
   await page.waitForURL(/inventory\.html/);
 
-  // Save signed-in state so other tests can reuse it
+  // Save signed-in state so other tests can reuse it - new change to verify pull request
   await page.context().storageState({ path: 'auth.json' });
 });
+
+
+

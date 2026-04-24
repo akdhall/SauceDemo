@@ -13,7 +13,7 @@ test.describe('Login Module', () => {
     expect(await login.isLoggedInSuccessfully()).toBe(true);
   });
 
-  // ✅ Negative tests (data-driven)
+  // ✅ Negative tests (data-driven) - new change to verify pull request
   negativeScenarios.forEach((scenario) => {
     test(`Negative Test - ${scenario.name}`, async ({ login }) => {
       await login.loginAs(scenario.user);
