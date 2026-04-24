@@ -47,6 +47,7 @@ jobs:
       env:
 
         PLAYWRIGHT_SERVICE_URL: ${{ vars.PLAYWRIGHT_SERVICE_URL }}
+        BASE_URL: ${{ vars.BASE_URL }} 
 
       run: npx playwright test --config=playwright.service.config.js --workers=4
 
