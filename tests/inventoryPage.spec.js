@@ -76,9 +76,9 @@ test('Add Multiple Products and Remove a few directly from Inventory @regression
 });
 });
 
-//------------Sorting Tests----------------------//
+//------------Sorting Tests----------------------// 
 test.describe('Sorting Test', () => {
-//Only Login & Inventory page, no cart/checkout needed
+//Only Login & Inventory page, no cart/checkout needed - New update
 for( const optionKey of Object.keys(sortOptions)){
   const option = sortOptions[optionKey];
 
